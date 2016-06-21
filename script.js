@@ -53,7 +53,7 @@ limitations under the License.
                let register = $("#r" + i).val();
                if (register != "") {
                    code.prepend(((register < 255) ? "" : "loop" + (i + 1) + ": ") + " MOV R" + i + ", #" + register + "d<br>");
-                   code.append((i==0 ? "loop0: " : "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;") + "DJNZ R" + i + ", loop" + i + "<br>");
+                   code.append((i==0 ? "loop0: " : "&nbsp;".repeat(7)) + "DJNZ R" + i + ", loop" + i + "<br>");
                }
            }
            code.prepend("wait:&nbsp;");
