@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>Assembler Zeitschleifen</title>
+    <link rel="stylesheet" href="https://yannik-buerkle.de/style.css">
+    <script src="jquery-3.0.0.min.js"></script>
+    <script src="script.js"></script>
+</head>
+
+<body>
+    <h1>Assembler Zeitschleifen</h1>
+    <p>
+        Diese Webseite berechnet Assembler Zeitschleifen für die Atmel8051-Familie mit Zeitschleifen nach dem folgenden Schema:
+    </p>
+    <code>
+        wait:&nbsp;&nbsp;MOV R0, #const8<br>
+        loopA: MOV R1, #const8<br>
+        loopB: MOV R2, #const8<br>
+        loopC: DJNZ R2, loopC<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;DJNZ R1, loopB<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;DJNZ R0, loopA<br>
+    </code>
+    <br>
+    <label for="takt">Prozessortakt</label>
+    <input type="text" id="takt" class="in register" value="10"> MHz
+    <br>
+    <br>
+    <table border="1">
+        <tr>
+            <td>
+                <table>
+                    <tr>
+                        <td>Dauer in Sekunden</td>
+                        <td>
+                            <input type="text" id="dauer" class="in register" value=""> s</td>
+                    </tr>
+                </table>
+            </td>
+            <td>
+                <table>
+                    <tr>
+                        <td>Register laden mit</td>
+                        <td>
+                            R0:
+                            <input type="text" id="r0" value="">
+                            <br> R1:
+                            <input type="text" id="r1" value="">
+                            <br> R2:
+                            <input type="text" id="r2" value="">
+                            <br> R3:
+                            <input type="text" id="r3" value="">
+                            <br> R4:
+                            <input type="text" id="r4" value="">
+                            <br> R5:
+                            <input type="text" id="r5" value="">
+                            <br> R6:
+                            <input type="text" id="r6" value="">
+                            <br> R7:
+                            <input type="text" id="r7" value="">
+                            <br>
+                        </td>
+                    </tr>
+                </table>
+            </td>
+        </tr>
+        <tr>
+            <td colspan="2">
+                Fertige Zeitschleife:
+                <br>
+                <code id="zeitschleife">
+                    wait:
+                </code>
+                <br> Aufruf der Zeitschleife:
+                <br>
+                <code>
+                    CALL wait
+                </code>
+            </td>
+        </tr>
+    </table>
+</body>
+
+</html>
